@@ -1,0 +1,69 @@
+import React, { Component } from 'react';
+
+class TransactionForm extends Component{
+	/*constructor(props){
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handlePartOnChange = this.handlePartOnChange.bind(this);
+		this.handleAmountOnChange = this.handleAmountOnChange.bind(this);
+		this.handleTypeOnChange = this.handleTypeOnChange.bind(this);
+	}
+
+	handleSubmit(event){
+		event.preventDefault();
+		console.log(this.props);
+	}
+
+	handleAmountOnChange(event){
+		console.log(event.target.value);
+	}
+
+	handlePartOnChange(event){
+		console.log(event.target.value);
+	}
+
+	handleTypeOnChange(event){
+		this.setState({
+			data:{
+				entries:[
+					{
+						type: event.target.value,
+					}
+				] 
+			}
+		});
+	}*/
+
+	render(){
+		const data = this.props.data;
+		return(
+			<form onSubmit={this.handleSubmit}>
+				<input
+					onChange={this.handlePartOnChange}
+					placeholder="Particulars"
+					type="text" 
+					name="particulars"
+				/>
+				<input
+					onChange={this.handleAmountOnChange}
+					placeholder="Amount"
+					type="number"
+					name="amount"
+				/>
+				<select
+					onChange={this.handleTypeOnChange}
+					name="type"
+				>
+					{data.types.map((type,index)=>
+						<option key={index} value={type}>
+							{type}
+						</option>
+					)}
+				</select>
+				<button>Submit</button>
+			</form>
+		);
+	}
+}
+
+export default TransactionForm;
